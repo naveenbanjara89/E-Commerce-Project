@@ -2,22 +2,23 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext'
 import { assets } from '../assets/assets'
+import RelatedProducts from '../components/RelatedProducts'
 
 const Product = () => {
-  const {productId}=useParams()
-  const {products,currency}=useContext(ShopContext)
+  const { productId } = useParams()
+  const { products, currency } = useContext(ShopContext)
   const [productData, setProductData] = useState(false)
   const [image, setImage] = useState([])
   const [size, setSize] = useState('')
 
-  const fetchProductData=async()=>{
-    products.map((item)=>{
-      if(item._id===productId){
+  const fetchProductData = async () => {
+    products.map((item) => {
+      if (item._id === productId) {
         setProductData(item)
         setImage(item.image[0])
         // console.log(item);
-        
-        
+
+
         return null;
       }
     })
@@ -25,8 +26,8 @@ const Product = () => {
 
   useEffect(() => {
     fetchProductData()
-  }, [productId,products])
-  
+  }, [productId, products])
+
 
 
 
@@ -40,8 +41,8 @@ const Product = () => {
 
           <div className='flex flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full '>
             {
-              productData.image.map((item,index)=>(
-                <img onClick={()=>setImage(item)} src={item} key={index} className='w-[24%] sm:w-full sm:mb-3  flex-shrink-0 cursor-pointer ' alt="" />
+              productData.image.map((item, index) => (
+                <img onClick={() => setImage(item)} src={item} key={index} className='w-[24%] sm:w-full sm:mb-3  flex-shrink-0 cursor-pointer ' alt="" />
               ))
             }
           </div>
@@ -68,8 +69,8 @@ const Product = () => {
           <div className='flex flex-col gap-4 my-8'>
             <p>Select Size</p>
             <div className='flex gap-2'>
-              {productData.sizes.map((item,index)=>(
-                <button onClick={()=>setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-orange-500' : '' } `} key={index}>{item}</button>
+              {productData.sizes.map((item, index) => (
+                <button onClick={() => setSize(item)} className={`border py-2 px-4 bg-gray-100 ${item === size ? 'border-orange-500' : ''} `} key={index}>{item}</button>
               ))}
             </div>
           </div>
@@ -100,6 +101,8 @@ const Product = () => {
       </div>
 
       {/* ---------------------------------Display related products---------------------------------------------------------------- */}
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
+
 
     </div>
   ) : <div className=' opacity-0'></div>
