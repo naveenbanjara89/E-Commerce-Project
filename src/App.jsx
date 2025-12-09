@@ -2,11 +2,11 @@ import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 import Collection from './pages/Collection'
-import Cart from './pages/Collection'
+import Cart from './pages/Cart'
 import Contact from './pages/Contact'
 import Login from './pages/Login'
 import Orders from './pages/Orders'
-import PlaceOrders from './pages/PlaceOrder'
+import PlaceOrders from './pages/PlaceOrders'
 import Product from './pages/Product'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -35,7 +35,7 @@ const App = () => {
           <Route path='/product/:productId' element={<Product />} />
           <Route path='/login' element={<Login />} />
           <Route path='/orders' element={<Orders />} />
-          <Route path='/placOrders' element={<PlaceOrders />} />
+          <Route path='/place-order' element={<PlaceOrders />} />
           <Route path='/product' element={<Product />} />
         </Routes>
         <Footer />
