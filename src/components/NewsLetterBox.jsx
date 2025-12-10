@@ -10,8 +10,8 @@ const NewsLetterBox = () => {
     <div>
         <div>
             <div className='text center px-70'>
-                <p className='text-2xl text-gray-800 font-medium px-25'>Subscribe now & get 20% off</p>
-                <p className='text-gray-400 mt-3'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p className='text-xl sm:text-2xl text-gray-800 font-medium px-4 sm:px-25'>Subscribe now & get 20% off</p>
+                <p className='text-gray-500 mt-2 sm:mt-3 text-sm sm:text-base px-4 sm:px-0'>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </div>
         </div>
         <div>
