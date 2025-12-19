@@ -1,9 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify'
 
 const NewsLetterBox = () => {
 
-    const onSubmitHandler=(event)=>{
-        event.preventDefault()
+    const [email, setEmail] = useState('')
+    const handleSubscribe = () => {
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+    if (!email) {
+        toast.error('Please enter an email')
+        return
+    }
+
+    if (!emailRegex.test(email)) {
+        toast.error('Please enter a valid email address')
+        return
+    }
+
+    toast.success('🎉 Thanks for subscribing!')
+    setEmail('')
     }
 
   return (
@@ -15,9 +31,9 @@ const NewsLetterBox = () => {
             </div>
         </div>
         <div>
-            <form onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border border-gray-300 pl-3 '>
-                <input type='email' className='w-full sm:flex-1 outline-none gap-2' placeholder='Enter your email ' required />
-                <button type='submit' className='bg-black text-white ml-2 cursor-pointer  text-xs px-10 py-4'>SUBSCRIBE</button>
+            <form className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border border-gray-300 pl-3 '>
+                <input type='email' value={email} onChange={(e) => setEmail(e.target.value)} className='w-full sm:flex-1 outline-none gap-2' placeholder='Enter your email ' required />
+                <button onClick={handleSubscribe} type='submit' className='bg-black text-white ml-2 cursor-pointer  text-xs px-10 py-4'>SUBSCRIBE</button>
             </form>
         </div>
     </div>
