@@ -64,7 +64,7 @@ const Navbar = () => {
             </div>
 
         
-        <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible?'w-full':'w-0' }`}>
+        <div className={`absolute top-16 left-0 w-full h-[calc(100vh-4rem)] z-40 overflow-hidden bg-white transition-all ${visible?'w-full':'w-0' }`}>
             
             <div className='flex flex-col text-gray-600 '>
                 <div onClick={()=>{
